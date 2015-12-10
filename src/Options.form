@@ -12,8 +12,8 @@
     <children>
       <grid id="94766" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="1.0" weighty="0.0"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="3" anchor="4" fill="2" indent="0" use-parent-layout="false"/>
+          <gridbag top="0" left="0" bottom="5" right="0" weightx="1.0" weighty="0.0"/>
         </constraints>
         <properties/>
         <border type="none"/>
@@ -57,8 +57,8 @@
         <children>
           <component id="6e76a" class="javax.swing.JLabel">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="0" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
               <text value="Package:"/>
@@ -66,17 +66,19 @@
           </component>
           <component id="187c5" class="javax.swing.JTextField" binding="textField1" default-binding="true">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="470" height="24"/>
               </grid>
               <gridbag weightx="1.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <enabled value="false"/>
+            </properties>
           </component>
           <component id="6ca23" class="javax.swing.JLabel">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="0.0" weighty="0.0"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag top="0" left="0" bottom="0" right="10" weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
               <text value="Destination:"/>
@@ -84,26 +86,29 @@
           </component>
           <component id="13ad4" class="javax.swing.JButton" binding="browseButton" default-binding="true">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
               <gridbag weightx="0.0" weighty="0.0"/>
             </constraints>
             <properties>
-              <text value="Browse"/>
+              <label value="Browse..."/>
+              <text value="Browse..."/>
             </properties>
           </component>
           <component id="7c3fd" class="javax.swing.JTextField" binding="textField2" default-binding="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="300" height="24"/>
               </grid>
               <gridbag weightx="1.0" weighty="0.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <enabled value="false"/>
+            </properties>
           </component>
           <scrollpane id="cf246">
             <constraints>
-              <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
-              <gridbag weightx="1.0" weighty="1.0"/>
+              <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <gridbag top="5" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties/>
             <border type="etched"/>
@@ -113,7 +118,7 @@
                 <properties>
                   <background color="-1904653"/>
                   <contentType value="text/plain"/>
-                  <font name="Menlo" size="12" style="0"/>
+                  <font name="Menlo" size="10" style="0"/>
                   <foreground color="-15527149"/>
                   <margin top="10" left="10" bottom="10" right="10"/>
                   <text value=""/>
@@ -124,6 +129,33 @@
               </component>
             </children>
           </scrollpane>
+          <component id="414bf" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Source:"/>
+            </properties>
+          </component>
+          <component id="13e0" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="ba609" class="javax.swing.JButton" binding="browseButton1" default-binding="true">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <text value="Browse..."/>
+            </properties>
+          </component>
         </children>
       </grid>
     </children>

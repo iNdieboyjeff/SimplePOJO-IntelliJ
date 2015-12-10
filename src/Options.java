@@ -5,6 +5,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.fileEditor.OpenFileDescriptor;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.JavaDirectoryService;
@@ -12,14 +13,14 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.impl.file.PsiDirectoryFactory;
+import com.intellij.util.io.PersistentHashMapValueStorage;
 import me.jeffsutton.SimplePOJO;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.PrintWriter;
-import java.io.StringReader;
+import java.io.*;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 public class Options extends JDialog {
     private JPanel contentPane;
@@ -29,9 +30,11 @@ public class Options extends JDialog {
     private JEditorPane editorPane1;
     private JTextField textField2;
     private JButton browseButton;
+    private JTextField textField3;
+    private JButton browseButton1;
     private Project project;
 
-    public Options(Project project) {
+    public Options(final Project project) {
         this.project = project;
         setContentPane(contentPane);
         setModal(true);
@@ -69,9 +72,52 @@ public class Options extends JDialog {
                 showFileChoicer();
             }
         });
+        browseButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FileChooserDescriptor Descriptor =  new  FileChooserDescriptor ( true , false , false , false , false , false );
+                Descriptor.setShowFileSystemRoots(true);
+                Descriptor.withFileFilter(new Condition<VirtualFile>() {
+                    @Override
+                    public boolean value(VirtualFile virtualFile) {
+                        if (virtualFile.getExtension().equalsIgnoreCase("xml")) {
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                VirtualFile VirtualFile =  FileChooser.chooseFile (Descriptor, project, null );
+                if (VirtualFile !=  null ) {
+                    textField3.setText(VirtualFile.getCanonicalPath());
+
+                    try {
+                        URL oracle = new URL(VirtualFile.getUrl());
+                        System.out.println("Using URL: " + oracle.toExternalForm());
+                        BufferedReader source = new BufferedReader(
+                                new InputStreamReader(oracle.openStream(), StandardCharsets.UTF_8), 4096);
+                        String file = "";
+                        try {
+                            String str;
+                            while ((str = source.readLine()) != null) {
+                                file += str;
+                            }
+                        } catch (Exception err) {
+                            err.printStackTrace();
+                        }
+                        editorPane1.setText(file);
+                    } catch (Exception err) {
+                        err.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
     private void onOK() {
+        if (textField1.getText() == null || textField1.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(textField1, "You must select a destination directory!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         generatePOJO();
         dispose();
     }
@@ -105,6 +151,7 @@ public class Options extends JDialog {
 
     private  void  showFileChoicer () {
         FileChooserDescriptor Descriptor =  new  FileChooserDescriptor ( false , true , false , false , false , false );
+        Descriptor.setShowFileSystemRoots(true);
         VirtualFile VirtualFile =  FileChooser.chooseFile (Descriptor, project, null );
         if (VirtualFile !=  null ) {
             PsiDirectory Directory =  PsiDirectoryFactory . getInstance (project) . createDirectory (VirtualFile);

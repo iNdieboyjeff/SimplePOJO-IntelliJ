@@ -1,6 +1,6 @@
 <idea-plugin version="2">
-  <id>com.your.company.unique.plugin.id</id>
-  <name>Plugin display name here</name>
+  <id>me.jeffsutton.pojogen</id>
+  <name>POJO Generator</name>
   <version>1.0</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
@@ -29,7 +29,7 @@
   </extensions>
 
   <actions>
-    <action class="Generator" id="simplepojo.generator" text="XML Model Generator" description="Generate Simple-XML Class Model" icon="/icons/icon.gif">
+    <action class="Generator" id="simplepojo.generator" text="XML Model Generator" description="Generate Simple-XML Class Model" icon="/icons/xml.png">
       <add-to-group group-id="MainToolBar" anchor="last"/>
     </action>
   </actions>
