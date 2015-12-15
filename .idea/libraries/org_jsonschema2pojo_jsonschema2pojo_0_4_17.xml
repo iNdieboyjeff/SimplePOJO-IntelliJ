@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="org.jsonschema2pojo:jsonschema2pojo:0.4.17" type="repository">
+    <properties maven-id="org.jsonschema2pojo:jsonschema2pojo:0.4.17" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/annotations/1.3.9/annotations-1.3.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo/0.4.17/jsonschema2pojo-0.4.17-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

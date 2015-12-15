@@ -32,7 +32,7 @@ public class Options extends JDialog {
     private JButton browseButton;
     private JTextField textField3;
     private JButton browseButton1;
-    private Project project;
+    private final Project project;
 
     public Options(final Project project) {
         this.project = project;
@@ -80,10 +80,7 @@ public class Options extends JDialog {
                 Descriptor.withFileFilter(new Condition<VirtualFile>() {
                     @Override
                     public boolean value(VirtualFile virtualFile) {
-                        if (virtualFile.getExtension().equalsIgnoreCase("xml")) {
-                            return true;
-                        }
-                        return false;
+                        return virtualFile != null && virtualFile.getExtension() != null && virtualFile.getExtension().equalsIgnoreCase("xml");
                     }
                 });
                 VirtualFile VirtualFile =  FileChooser.chooseFile (Descriptor, project, null );
@@ -158,7 +155,9 @@ public class Options extends JDialog {
 
             String path = VirtualFile . getCanonicalPath();
             String pkg =  "" ;
-            if (path . contains ( "Java" )) {
+            if (path . contains ( "src" ) && path.contains("java")) {
+                pkg = path . split ( "java/" ) [ 1 ] . replaceAll ( "/" , "." );
+            } else if (path . contains ( "Java" )) {
                 pkg = path . split ( "Java/" ) [ 1 ] . replaceAll ( "/" , "." );
             } else  if (path . contains ( "src" )) {
                 pkg = path . split ( "src/" ) [ 1 ] . replaceAll ( "/" , "." );

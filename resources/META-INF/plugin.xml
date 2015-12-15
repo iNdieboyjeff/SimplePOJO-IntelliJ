@@ -2,18 +2,17 @@
   <id>me.jeffsutton.pojogen</id>
   <name>POJO Generator</name>
   <version>1.0</version>
-  <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+  <vendor email="indieboy1979@gmail.com">Jeff Sutton</vendor>
 
   <description><![CDATA[
-      Enter short description for your plugin here.<br>
-      <em>most HTML tags may be used</em>
+      Generate Java objects from XML and JSON files.
     ]]></description>
 
-  <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
-    ]]>
-  </change-notes>
+  <!--<change-notes><![CDATA[-->
+      <!--Add change notes here.<br>-->
+      <!--<em>most HTML tags may be used</em>-->
+    <!--]]>-->
+  <!--</change-notes>-->
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
   <idea-version since-build="141.0"/>
@@ -30,6 +29,9 @@
 
   <actions>
     <action class="Generator" id="simplepojo.generator" text="XML Model Generator" description="Generate Simple-XML Class Model" icon="/icons/xml.png">
+      <add-to-group group-id="MainToolBar" anchor="last"/>
+    </action>
+    <action id="simplepojo.json.generator" class="JSONGenerator" text="JSON Model Generator" description="Generate JSON Class Model" icon="/icons/json.png">
       <add-to-group group-id="MainToolBar" anchor="last"/>
     </action>
   </actions>

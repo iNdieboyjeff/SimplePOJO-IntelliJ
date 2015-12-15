@@ -10,5 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="SimplePOJO" level="project" />
+    <orderEntry type="library" name="org.jsonschema2pojo:jsonschema2pojo:0.4.17" level="project" />
+    <orderEntry type="library" name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.17" level="project" />
   </component>
 </module>
