@@ -14,7 +14,7 @@ public class Generator extends AnAction {
         form.setTitle("SimpleXML POJO Generator");
         form.pack();
         form.setLocationRelativeTo(anActionEvent.getInputEvent().getComponent());
-        form.setResizable(false);
+        form.setResizable(true);
         form.setModal(true);
         form.setVisible(true);
     }

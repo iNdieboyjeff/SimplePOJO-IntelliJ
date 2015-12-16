@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="com.github.javadev:underscore-string:1.5" type="repository">
+    <properties maven-id="com.github.javadev:underscore-string:1.5" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/javadev/underscore-string/1.5/underscore-string-1.5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/javadev/underscore/1.9/underscore-1.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/javadev/underscore-string/1.5/underscore-string-1.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/javadev/underscore-string/1.5/underscore-string-1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

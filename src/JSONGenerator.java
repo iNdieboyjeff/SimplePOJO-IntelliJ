@@ -13,8 +13,8 @@ public class JSONGenerator extends AnAction {
         JSONOptions form = new JSONOptions(project);
         form.setTitle("JSON POJO Generator");
         form.pack();
-        form.setLocationRelativeTo(e.getInputEvent().getComponent());
-        form.setResizable(false);
+        form.setLocationRelativeTo(e.getInputEvent().getComponent().getParent());
+        form.setResizable(true);
         form.setModal(true);
         form.setVisible(true);
     }

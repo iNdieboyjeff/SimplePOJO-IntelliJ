@@ -7,10 +7,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="SimplePOJO" level="project" />
-    <orderEntry type="library" name="org.jsonschema2pojo:jsonschema2pojo:0.4.17" level="project" />
-    <orderEntry type="library" name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.17" level="project" />
+    <orderEntry type="library" exported="" name="com.fifesoft:rsyntaxtextarea:2.5.8" level="project" />
+    <orderEntry type="library" exported="" name="com.github.javadev:underscore-string:1.5" level="project" />
+    <orderEntry type="library" exported="" name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.17" level="project" />
+    <orderEntry type="library" exported="" name="org.jsonschema2pojo:jsonschema2pojo:0.4.17" level="project" />
+    <orderEntry type="inheritedJdk" />
   </component>
 </module>

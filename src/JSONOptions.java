@@ -1,4 +1,8 @@
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.project.Project;
@@ -9,9 +13,15 @@ import com.intellij.psi.impl.file.PsiDirectoryFactory;
 import com.sun.codemodel.JCodeModel;
 import com.sun.codemodel.writer.FileCodeWriter;
 import com.sun.codemodel.writer.ProgressCodeWriter;
+import org.fife.ui.rsyntaxtextarea.SyntaxScheme;
+import org.fife.ui.rsyntaxtextarea.TextEditorPane;
+import org.fife.ui.rsyntaxtextarea.Token;
+import org.fife.ui.rtextarea.Gutter;
+import org.fife.ui.rtextarea.RTextScrollPane;
 import org.jsonschema2pojo.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,14 +49,42 @@ public class JSONOptions extends JDialog {
     private JCheckBox generateToStringCheckBox;
     private JCheckBox useCommonsLang3CheckBox;
     private JCheckBox useJodaDatesTimesCheckBox;
+    private JCheckBox generateDynamicAccessorsCheckBox;
+    private TextEditorPane textEditor;
+    private RTextScrollPane RTextScrollPane1;
 
     private VirtualFile fIN;
 
     public JSONOptions(final Project project) {
         this.project = project;
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
+        RTextScrollPane1.setViewportView(textEditor);
+        RTextScrollPane1.setLineNumbersEnabled(true);
+        RTextScrollPane1.setFoldIndicatorEnabled(true);
+
+        Gutter gutter = RTextScrollPane1.getGutter();
+        gutter.setBackground(new Color(47, 47, 47));
+
+
+        SyntaxScheme scheme = textEditor.getSyntaxScheme();
+        scheme.getStyle(Token.RESERVED_WORD).background = Color.yellow;
+        scheme.getStyle(Token.RESERVED_WORD_2).background = Color.yellow;
+        scheme.getStyle(Token.DATA_TYPE).foreground = Color.blue;
+        scheme.getStyle(Token.LITERAL_NUMBER_HEXADECIMAL).foreground = Color.decode("#FFC66D");
+        scheme.getStyle(Token.IDENTIFIER).foreground = Color.decode("#A9B7C6");
+        scheme.getStyle(Token.FUNCTION).foreground = Color.yellow;
+        scheme.getStyle(Token.MARKUP_TAG_NAME).foreground = Color.yellow;
+        scheme.getStyle(Token.SEPARATOR).foreground = Color.decode("#A9B7C6");
+        scheme.getStyle(Token.LITERAL_BOOLEAN).foreground = Color.decode("#CB772F");
+        scheme.getStyle(Token.VARIABLE).foreground = Color.decode("#9876AA");
+        scheme.getStyle(Token.LITERAL_NUMBER_DECIMAL_INT).foreground = Color.decode("#6897BB");
+        scheme.getStyle(Token.LITERAL_NUMBER_FLOAT).foreground = Color.decode("#6897BB");
+        scheme.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).underline = false;
+        scheme.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground = Color.decode("#A5C25C");
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +141,13 @@ public class JSONOptions extends JDialog {
                         } catch (Exception err) {
                             err.printStackTrace();
                         }
-//                        editorPane1.setText(file);
+
+                        JsonParser parser = new JsonParser();
+                        JsonElement el = parser.parse(file);
+
+                        Gson gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().create();
+
+                        textEditor.setText(gson.toJson(el));
                     } catch (Exception err) {
                         err.printStackTrace();
                     }
@@ -120,6 +164,21 @@ public class JSONOptions extends JDialog {
 
     private void onOK() {
 
+        if (textField1.getText() == null || textField1.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(textField1, "You must select a source file", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (textField2.getText() == null || textField2.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(textField2, "You must select a destination directory/package", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+
+        if (textField4.getText() == null || textField4.getText().equalsIgnoreCase("")) {
+            JOptionPane.showMessageDialog(textField4, "You must provide a name for the root class", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         Annotator annotator;
         if (GSONRadioButton.isSelected())
             annotator = new GsonAnnotator();
@@ -133,8 +192,9 @@ public class JSONOptions extends JDialog {
         config.useCommons = useCommonsLang3CheckBox.isSelected();
         config.useJoda = useJodaDatesTimesCheckBox.isSelected();
         config.useToString = generateToStringCheckBox.isSelected();
+        config.useDynamic = generateDynamicAccessorsCheckBox.isSelected();
 
-       JPG.generate(new File(textField1.getText()), new File(textField2.getText()), textField3.getText(), textField4.getText(), annotator, config);
+        JPG.generate(textEditor.getText(), new File(textField2.getText()), textField3.getText(), textField4.getText(), annotator, config);
 
         dispose();
     }
@@ -171,6 +231,8 @@ public class JSONOptions extends JDialog {
         }
     }
 
-    private class RuleFactory {
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
+
     }
 }

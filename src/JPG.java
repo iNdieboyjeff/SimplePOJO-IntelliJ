@@ -19,7 +19,7 @@ import java.net.URL;
  */
 class JPG {
 
-    public static void generate(File src, File dest, String pkg, String main, Annotator annotator, SourceGenerationConfig config) {
+    public static void generate(String src, File dest, String pkg, String main, Annotator annotator, SourceGenerationConfig config) {
         JCodeModel codeModel = new JCodeModel();
         try {
             System.out.println("Using URL: " + src.toString());
@@ -37,7 +37,7 @@ class JPG {
         System.out.println(file);
        RuleFactory ruleFactory = new RuleFactory(config, annotator, new SchemaStore());
        SchemaMapper gen =  new SchemaMapper(ruleFactory, new SchemaGenerator());
-       gen.generate(codeModel, main, pkg, src.getAbsoluteFile().toURI().toURL());
+       gen.generate(codeModel, main, pkg, src);
 
             System.out.println("Using file: " + dest.getAbsolutePath() + " " + dest.exists() + " " + dest.isDirectory());
         if (!dest.exists()) {

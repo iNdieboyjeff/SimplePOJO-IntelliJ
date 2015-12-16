@@ -105,27 +105,36 @@
               <enabled value="false"/>
             </properties>
           </component>
-          <scrollpane id="cf246">
+          <scrollpane id="cf246" class="org.fife.ui.rtextarea.RTextScrollPane" binding="scroll">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
               <gridbag top="5" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <foldIndicatorEnabled value="true"/>
+              <lineNumbersEnabled value="true"/>
+            </properties>
             <border type="etched"/>
             <children>
-              <component id="a12d4" class="javax.swing.JEditorPane" binding="editorPane1" default-binding="true">
+              <component id="4b081" class="org.fife.ui.rsyntaxtextarea.TextEditorPane" binding="editorPane1" default-binding="true">
                 <constraints/>
                 <properties>
-                  <background color="-1904653"/>
-                  <contentType value="text/plain"/>
-                  <font name="Menlo" size="10" style="0"/>
-                  <foreground color="-15527149"/>
-                  <margin top="10" left="10" bottom="10" right="10"/>
+                  <background color="-14737633"/>
+                  <caretColor color="-1976036"/>
+                  <codeFoldingEnabled value="true"/>
+                  <font name="Menlo" size="12" style="0"/>
+                  <foreground color="-1904653"/>
+                  <highlightCurrentLine value="false"/>
+                  <highlightSecondaryLanguages value="false"/>
+                  <inheritsPopupMenu value="true"/>
+                  <marginLineEnabled value="false"/>
+                  <marginLinePosition value="220"/>
+                  <markOccurrences value="true"/>
+                  <syntaxEditingStyle value="text/json"/>
+                  <tabSize value="4"/>
+                  <tabsEmulated value="true"/>
                   <text value=""/>
                 </properties>
-                <clientProperties>
-                  <charset class="java.lang.String" value=""/>
-                </clientProperties>
               </component>
             </children>
           </scrollpane>

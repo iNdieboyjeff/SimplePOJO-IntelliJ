@@ -12,6 +12,23 @@ class SourceGenerationConfig extends DefaultGenerationConfig {
     public boolean useToString = false;
     public boolean useCommons = false;
     public boolean useJoda = false;
+    public boolean useDynamic = false;
+
+    @Override
+    public boolean isIncludeDynamicAccessors() {
+        return useDynamic;
+    }
+
+    @Override
+    public boolean isIncludeJsr303Annotations() {
+        return true;
+    }
+
+    @Override
+    public boolean isIncludeAdditionalProperties() {
+        return false;
+    }
+
     /**
      * @return {@link SourceType#JSONSCHEMA}
      */
