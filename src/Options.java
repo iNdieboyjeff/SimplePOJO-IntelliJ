@@ -46,6 +46,7 @@ public class Options extends JDialog {
     private JTextField textField3;
     private JButton browseButton1;
     private RTextScrollPane scroll;
+    private JProgressBar progressBar1;
     private final Project project;
     private DocumentBuilderFactory dbf;
 
@@ -54,6 +55,8 @@ public class Options extends JDialog {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+
+        progressBar1.setVisible(false);
 
         scroll.setViewportView(editorPane1);
         scroll.setLineNumbersEnabled(true);
@@ -118,40 +121,62 @@ public class Options extends JDialog {
                 VirtualFile VirtualFile = FileChooser.chooseFile(Descriptor, project, null);
                 if (VirtualFile != null) {
                     textField3.setText(VirtualFile.getCanonicalPath());
+                    new LoadTask(VirtualFile).execute();
 
-                    try {
-                        URL oracle = new URL(VirtualFile.getUrl());
-                        System.out.println("Using URL: " + oracle.toExternalForm());
-                        BufferedReader source = new BufferedReader(
-                                new InputStreamReader(oracle.openStream(), StandardCharsets.UTF_8), 4096);
-                        String file = "";
-                        try {
-                            String str;
-                            while ((str = source.readLine()) != null) {
-                                file += str;
-                            }
-                        } catch (Exception err) {
-                            err.printStackTrace();
-                        }
-
-                        Source xmlInput = new StreamSource(new StringReader(file));
-                        StringWriter stringWriter = new StringWriter();
-                        StreamResult xmlOutput = new StreamResult(stringWriter);
-                        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-                        transformerFactory.setAttribute("indent-number", 4);
-
-                        Transformer transformer = transformerFactory.newTransformer();
-                        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-                        transformer.transform(xmlInput, xmlOutput);
-                        String s = xmlOutput.getWriter().toString();
-
-                        editorPane1.setText(format(s));
-                    } catch (Exception err) {
-                        err.printStackTrace();
-                    }
                 }
             }
         });
+    }
+
+    class LoadTask extends SwingWorker<Void, Void> {
+
+        VirtualFile VirtualFile;
+
+        public LoadTask(VirtualFile f) {
+            VirtualFile = f;
+        }
+
+        @Override
+        protected Void doInBackground() throws Exception {
+            progressBar1.setVisible(true);
+            try {
+                URL oracle = new URL(VirtualFile.getUrl());
+                System.out.println("Using URL: " + oracle.toExternalForm());
+                BufferedReader source = new BufferedReader(
+                        new InputStreamReader(oracle.openStream(), StandardCharsets.UTF_8), 4096);
+                String file = "";
+                try {
+                    String str;
+                    while ((str = source.readLine()) != null) {
+                        file += str;
+                    }
+                } catch (Exception err) {
+                    err.printStackTrace();
+                }
+
+                Source xmlInput = new StreamSource(new StringReader(file));
+                StringWriter stringWriter = new StringWriter();
+                StreamResult xmlOutput = new StreamResult(stringWriter);
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                transformerFactory.setAttribute("indent-number", 4);
+
+                Transformer transformer = transformerFactory.newTransformer();
+                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+                transformer.transform(xmlInput, xmlOutput);
+                String s = xmlOutput.getWriter().toString();
+
+                editorPane1.setText(format(s));
+            } catch (Exception err) {
+                err.printStackTrace();
+
+                JOptionPane.showMessageDialog(textField1, "There was an error reading the source file.", "Error", JOptionPane.ERROR_MESSAGE);
+                progressBar1.setVisible(false);
+                return null;
+
+            }
+            progressBar1.setVisible(false);
+            return null;
+        }
     }
 
     public String format(String unformattedXml) {
@@ -193,8 +218,18 @@ public class Options extends JDialog {
             JOptionPane.showMessageDialog(textField1, "You must select a destination directory!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        generatePOJO();
-        dispose();
+        new Task().execute();
+    }
+
+    class Task extends SwingWorker<Void, Void> {
+
+        @Override
+        protected Void doInBackground() throws Exception {
+            progressBar1.setVisible(true);
+            generatePOJO();
+            dispose();
+            return null;
+        }
     }
 
     private void onCancel() {
