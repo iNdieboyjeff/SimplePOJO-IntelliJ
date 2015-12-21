@@ -1,5 +1,8 @@
+import org.jsonschema2pojo.AnnotationStyle;
 import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.SourceType;
+
+import java.io.File;
 
 /**
  * Created by jeff on 26/07/15.
@@ -27,6 +30,16 @@ class SourceGenerationConfig extends DefaultGenerationConfig {
     @Override
     public boolean isIncludeAdditionalProperties() {
         return false;
+    }
+
+    @Override
+    public File getTargetDirectory() {
+        return super.getTargetDirectory();
+    }
+
+    @Override
+    public AnnotationStyle getAnnotationStyle() {
+        return AnnotationStyle.GSON;
     }
 
     /**

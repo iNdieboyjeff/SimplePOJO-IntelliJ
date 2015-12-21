@@ -222,7 +222,7 @@ public class JSONOptions extends JDialog {
                 pkg = path.split("Java/")[1].replaceAll("/", ".");
                 src = path.split("Java/")[0] + "Java";
             } else if (path.contains("src")) {
-                pkg = path.split("src/")[1].replaceAll("/", ".");
+                try {pkg = path.split("src/")[1].replaceAll("/", ".");} catch (Exception e) {}
                 src = path.split("src/")[0] + "src";
             }
 

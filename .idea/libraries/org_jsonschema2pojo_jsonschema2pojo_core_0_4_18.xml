@@ -1,8 +1,8 @@
 <component name="libraryTable">
-  <library name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.17" type="repository">
-    <properties maven-id="org.jsonschema2pojo:jsonschema2pojo-core:0.4.17" />
+  <library name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.18" type="repository">
+    <properties maven-id="org.jsonschema2pojo:jsonschema2pojo-core:0.4.18" />
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo-core/0.4.17/jsonschema2pojo-core-0.4.17.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo-core/0.4.18/jsonschema2pojo-core-0.4.18.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.2.0/jackson-databind-2.2.0.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.2.0/jackson-annotations-2.2.0.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.2.0/jackson-core-2.2.0.jar!/" />
@@ -26,10 +26,10 @@
       <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/annotations/1.3.9/annotations-1.3.9.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo-core/0.4.17/jsonschema2pojo-core-0.4.17-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo-core/0.4.18/jsonschema2pojo-core-0.4.18-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo-core/0.4.17/jsonschema2pojo-core-0.4.17-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jsonschema2pojo/jsonschema2pojo-core/0.4.18/jsonschema2pojo-core-0.4.18-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

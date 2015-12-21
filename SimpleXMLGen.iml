@@ -10,7 +10,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="com.fifesoft:rsyntaxtextarea:2.5.8" level="project" />
     <orderEntry type="library" exported="" name="com.github.javadev:underscore-string:1.5" level="project" />
-    <orderEntry type="library" exported="" name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.17" level="project" />
+    <orderEntry type="library" exported="" name="org.jsonschema2pojo:jsonschema2pojo-core:0.4.18" level="project" />
     <orderEntry type="library" exported="" name="org.jsonschema2pojo:jsonschema2pojo:0.4.17" level="project" />
     <orderEntry type="inheritedJdk" />
   </component>

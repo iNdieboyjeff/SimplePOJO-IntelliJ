@@ -5,7 +5,11 @@
   <vendor email="indieboy1979@gmail.com">Jeff Sutton</vendor>
 
   <description><![CDATA[
-      Generate Java objects from XML and JSON files.
+      Generate Java objects from XML and JSON files.<br />
+      <br />
+      JSON generation using jsonschema2pojo and supports Gson or Jackson2 annotations.<br />
+      XML generation is done using a custom parser and supports Simple XML annotations.<br /><br />
+      As with all automatic class generators, output should be reviewed and modified as required.
     ]]></description>
 
   <!--<change-notes><![CDATA[-->
