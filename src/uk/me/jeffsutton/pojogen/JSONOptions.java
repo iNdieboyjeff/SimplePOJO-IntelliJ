@@ -1,3 +1,4 @@
+package uk.me.jeffsutton.pojogen;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,3 +1,5 @@
+package uk.me.jeffsutton.pojogen;
+
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.sun.codemodel.JCodeModel;

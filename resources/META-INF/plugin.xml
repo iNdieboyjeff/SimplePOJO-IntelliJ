@@ -1,7 +1,7 @@
 <idea-plugin version="2">
-  <id>me.jeffsutton.pojogen</id>
+  <id>uk.me.jeffsutton.pojogen</id>
   <name>POJO Generator</name>
-  <version>1.0</version>
+  <version>1.2</version>
   <vendor email="indieboy1979@gmail.com">Jeff Sutton</vendor>
 
   <description><![CDATA[
@@ -32,10 +32,10 @@
   </extensions>
 
   <actions>
-    <action class="Generator" id="simplepojo.generator" text="XML Model Generator" description="Generate Simple-XML Class Model" icon="/icons/xml.png">
+    <action class="uk.me.jeffsutton.pojogen.Generator" id="simplepojo.generator" text="XML Model Generator" description="Generate Simple-XML Class Model" icon="/icons/xml.png">
       <add-to-group group-id="MainToolBar" anchor="last"/>
     </action>
-    <action id="simplepojo.json.generator" class="JSONGenerator" text="JSON Model Generator" description="Generate JSON Class Model" icon="/icons/json.png">
+    <action id="simplepojo.json.generator" class="uk.me.jeffsutton.pojogen.JSONGenerator" text="JSON Model Generator" description="Generate JSON Class Model" icon="/icons/json.png">
       <add-to-group group-id="MainToolBar" anchor="last"/>
     </action>
   </actions>

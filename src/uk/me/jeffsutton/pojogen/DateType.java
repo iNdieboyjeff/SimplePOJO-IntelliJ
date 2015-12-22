@@ -1,4 +1,4 @@
-/*
+package uk.me.jeffsutton.pojogen;/*
  * Copyright (c) 2015 Jeff Sutton.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

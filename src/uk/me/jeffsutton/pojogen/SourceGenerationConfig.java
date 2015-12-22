@@ -1,3 +1,5 @@
+package uk.me.jeffsutton.pojogen;
+
 import org.jsonschema2pojo.AnnotationStyle;
 import org.jsonschema2pojo.DefaultGenerationConfig;
 import org.jsonschema2pojo.SourceType;
