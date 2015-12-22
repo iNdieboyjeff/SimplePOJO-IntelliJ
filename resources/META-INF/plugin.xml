@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>uk.me.jeffsutton.pojogen</id>
   <name>POJO Generator</name>
-  <version>1.2</version>
+  <version>1.2.1</version>
   <vendor email="indieboy1979@gmail.com">Jeff Sutton</vendor>
 
   <description><![CDATA[

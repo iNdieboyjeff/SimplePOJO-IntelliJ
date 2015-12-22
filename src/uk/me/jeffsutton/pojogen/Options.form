@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Options">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="uk.me.jeffsutton.pojogen.Options">
   <grid id="cbd77" binding="contentPane" layout-manager="GridBagLayout">
     <constraints>
       <xy x="48" y="54" width="690" height="500"/>
@@ -114,8 +114,8 @@
               <gridbag top="5" left="0" bottom="0" right="0" weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <foldIndicatorEnabled value="true"/>
-              <lineNumbersEnabled value="true"/>
+              <foldIndicatorEnabled value="false"/>
+              <lineNumbersEnabled value="false"/>
             </properties>
             <border type="etched"/>
             <children>
