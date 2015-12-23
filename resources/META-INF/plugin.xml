@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>uk.me.jeffsutton.pojogen</id>
   <name>POJO Generator</name>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <vendor email="indieboy1979@gmail.com">Jeff Sutton</vendor>
 
   <description><![CDATA[
@@ -26,6 +26,10 @@
   <!-- uncomment to enable plugin in all products
   <depends>com.intellij.modules.lang</depends>
   -->
+  <depends>com.intellij.modules.lang</depends>
+  <depends optional="true">com.intellij.modules.java</depends>
+  <depends optional="true">com.intellij.modules.ultimate</depends>
+  <depends optional="true">com.intellij.modules.androidstudio</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
